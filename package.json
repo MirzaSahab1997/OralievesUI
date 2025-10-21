@@ -1,5 +1,6 @@
 {
-  "name": "vite-project",
+  "name": "oralieves-ui",
+  "description": "Oralieves - Global Partner for Innovative Oral Healthcare Solutions",
   "private": true,
   "version": "0.0.0",
   "type": "module",
