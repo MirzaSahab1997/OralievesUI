@@ -25,8 +25,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
 
   const serviceCards = [
     {
+      icon: <Users className="w-8 h-8" />,
+      title: "Clients",
+      description: "Serving clinics, distributors, and retail chains with comprehensive oral healthcare solutions tailored to their specific needs.",
+      linkText: "Learn More",
+      page: "clients"
+    },
+    {
       icon: <Building2 className="w-8 h-8" />,
-      title: "About Us",
+      title: "Oralieves",
       description: "We are dedicated to providing innovative oral healthcare solutions that improve patient outcomes and enhance clinical practices worldwide.",
       linkText: "Learn More",
       page: "about"
@@ -37,13 +44,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
       description: "Partner with leading manufacturers to deliver high-quality oral healthcare products and innovative solutions to healthcare providers.",
       linkText: "Explore Partners",
       page: "manufacturers"
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Contact Us",
-      description: "Serving clinics, distributors, and retail chains with comprehensive oral healthcare solutions tailored to their specific needs.",
-      linkText: "Contact Us",
-      page: "contact"
     }
   ];
 
@@ -98,7 +98,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
                 {/* Circular Card Background - Clickable */}
                 <div 
                   onClick={() => setCurrentPage(service.page)}
-                  className="bg-white rounded-full shadow-lg hover:shadow-xl transform group hover:scale-105 transition-all duration-300 p-8 flex flex-col items-center justify-center text-center cursor-pointer" 
+                  className="bg-white rounded-full shadow-lg hover:shadow-xl transform group hover:scale-105 transition-all duration-300 p-8 flex flex-col items-center justify-center text-center cursor-pointer"
                   style={{ width: '400px', height: '400px', border: '3px solid rgb(15, 150, 150)' }}
                 >
                   {/* Icon Circle */}
@@ -127,7 +127,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
                   </div>
                   
                   {/* Content */}
-                  <h3 className="text-2xl font-bold mb-3" style={{ color: '#0f9696' }}>
+                  <h3 className="text-2xl mb-3" style={{ color: '#0f9696', fontWeight: '400' }}>
                     {service.title}
                   </h3>
                   
