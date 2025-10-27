@@ -1,18 +1,32 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { 
+  Facebook, 
+  Twitter, 
+  Instagram, 
+  Youtube, 
+  Linkedin
+} from 'lucide-react';
 
 interface ContactUsProps {
   setCurrentPage: (page: string) => void;
 }
 
 const ContactUs: React.FC<ContactUsProps> = ({ setCurrentPage }) => {
+  const currentYear = new Date().getFullYear();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     contactNumber: '',
     country: ''
   });
+
+  const socialLinks = [
+    { icon: <Facebook className="w-5 h-5" />, href: "https://facebook.com", label: "Facebook" },
+    { icon: <Twitter className="w-5 h-5" />, href: "https://twitter.com", label: "Twitter" },
+    { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com", label: "Instagram" },
+    { icon: <Youtube className="w-5 h-5" />, href: "https://youtube.com", label: "YouTube" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com", label: "LinkedIn" }
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -28,13 +42,29 @@ const ContactUs: React.FC<ContactUsProps> = ({ setCurrentPage }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-oralieves-light via-white to-oralieves-accent">
-      <Navbar setCurrentPage={setCurrentPage} currentPage="contact" />
+    <div className="relative min-h-screen bg-gradient-to-br from-oralieves-light via-white to-oralieves-accent">
+      {/* Back Button */}
+      <div className="absolute top-4 left-4 z-50">
+        <button
+          onClick={() => setCurrentPage('home')}
+          className="flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Home
+        </button>
+      </div>
 
       {/* Banner Section */}
-      <section className="bg-gradient-to-r from-oralieves-primary to-oralieves-secondary py-20 px-4 sm:px-6 lg:px-8">
+      <section 
+        className="py-20 px-4 sm:px-6 lg:px-8"
+        style={{ 
+          background: 'linear-gradient(135deg, rgb(79, 209, 199) 0%, rgb(15, 150, 150) 100%)'
+        }}
+      >
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Contact Us</h1>
+          <h1 className="text-5xl md:text-6xl text-white mb-6" style={{ fontWeight: '400' }}>Contact Us</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
             Get in touch with ORALIEVES Pakistan
           </p>
@@ -139,7 +169,7 @@ const ContactUs: React.FC<ContactUsProps> = ({ setCurrentPage }) => {
 
             {/* Contact Information */}
             <div className="mt-12 pt-8 border-t border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Our Contact Information</h3>
+              <h3 className="text-2xl text-gray-800 mb-6 text-center" style={{ fontWeight: '400' }}>Our Contact Information</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white/50 backdrop-blur-sm rounded-xl p-6 border-2 border-oralieves-primary/20 text-center">
                   <div className="w-14 h-14 bg-gradient-to-br from-oralieves-primary to-oralieves-secondary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -187,7 +217,40 @@ const ContactUs: React.FC<ContactUsProps> = ({ setCurrentPage }) => {
         </div>
       </main>
 
-      <Footer />
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Social Media */}
+          <div className="flex flex-col items-center mb-8">
+            <h4 className="text-lg font-semibold mb-4">FIND US:</h4>
+            <div className="flex gap-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full transition-all duration-300 hover:scale-110"
+                  style={{ 
+                    backgroundColor: 'rgb(79 209 199)',
+                    color: 'white'
+                  }}
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Copyright and Address */}
+          <div className="text-center space-y-2 pt-8 border-t border-gray-700">
+            <p className="text-sm text-gray-400">
+              © {currentYear} Oralieves. All rights reserved. | Manufacturer of Personal Care Products
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

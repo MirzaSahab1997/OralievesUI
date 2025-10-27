@@ -1,23 +1,87 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Logo from '../images/Logo.png';
+import { 
+  Facebook, 
+  Twitter, 
+  Instagram, 
+  Youtube, 
+  Linkedin
+} from 'lucide-react';
 
 interface AboutUsProps {
   setCurrentPage: (page: string) => void;
 }
 
 const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
+  const currentYear = new Date().getFullYear();
+  const socialLinks = [
+    { icon: <Facebook className="w-5 h-5" />, href: "https://facebook.com", label: "Facebook" },
+    { icon: <Twitter className="w-5 h-5" />, href: "https://twitter.com", label: "Twitter" },
+    { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com", label: "Instagram" },
+    { icon: <Youtube className="w-5 h-5" />, href: "https://youtube.com", label: "YouTube" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com", label: "LinkedIn" }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-oralieves-light via-white to-oralieves-accent">
-      <Navbar setCurrentPage={setCurrentPage} currentPage="about" />
+    <div className="relative min-h-screen bg-gradient-to-br from-oralieves-light via-white to-oralieves-accent">
+      {/* Back Button */}
+      <div className="absolute top-4 left-4 z-50">
+        <button
+          onClick={() => setCurrentPage('home')}
+          className="flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Home
+        </button>
+      </div>
 
       {/* Banner Section */}
-      <section className="bg-gradient-to-r from-oralieves-primary to-oralieves-secondary py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">About ORALIEVES</h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Your Trusted B2B International Service Provider in Oral Healthcare
-          </p>
+      <section 
+        className="py-16 px-4 sm:px-6 lg:px-8"
+        style={{ 
+          background: 'linear-gradient(135deg, rgb(79, 209, 199) 0%, rgb(15, 150, 150) 100%)'
+        }}
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Logo */}
+          <div className="text-center">
+            <div className="inline-block bg-white rounded-lg shadow-xl p-6 border border-gray-100" style={{ width: '200px', height: '60px' }}>
+              <div className="flex flex-col items-center justify-center h-full">
+                <img src={Logo} alt="Oralieves Logo" style={{ maxHeight: '150px', width: 'auto' }} />
+              </div>
+            </div>
+          </div>
+
+          {/* Title */}
+          <div className="text-center mb-12">
+            <h2 className="text-5xl md:text-6xl" style={{ color: '#ffffff', fontWeight: '300' }}>
+              About Oralieves
+            </h2>
+          </div>
+
+          {/* Navigation Bar */}
+          <div className="flex flex-wrap justify-center items-center gap-6 pt-8 border-t border-white/20">
+            <button className="text-white hover:text-oralieves-primary transition-colors font-medium">
+              COMPANY BACKGROUND
+            </button>
+            <button className="text-white hover:text-oralieves-primary transition-colors font-medium">
+              SERVICES
+            </button>
+            <button className="text-white hover:text-oralieves-primary transition-colors font-medium">
+              VALUES
+            </button>
+            <button className="text-white hover:text-oralieves-primary transition-colors font-medium">
+              BLOGS
+            </button>
+            <button 
+              onClick={() => setCurrentPage('contact')}
+              className="text-white hover:text-oralieves-primary transition-colors font-medium"
+            >
+              CONTACT
+            </button>
+          </div>
         </div>
       </section>
 
@@ -28,7 +92,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
           <section className="mb-20">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Who We Are</h2>
+                <h2 className="text-3xl md:text-4xl text-gray-800 mb-6" style={{ fontWeight: '400' }}>Who We Are</h2>
                 <p className="text-gray-700 text-lg leading-relaxed mb-4">
                   At <span className="font-semibold text-oralieves-primary">ORALIEVES Pakistan</span>, we are a trusted B2B international service provider in the field of oral health care. We specialize in building long-term agency agreements with leading global manufacturers, representing their unique products that meet regulatory compliance, proven efficacy, and reliable supply assurance.
                 </p>
@@ -57,7 +121,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
                 />
               </div>
               <div className="order-1 md:order-2">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Strengths</h2>
+                <h2 className="text-3xl md:text-4xl text-gray-800 mb-6" style={{ fontWeight: '400' }}>Our Strengths</h2>
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <div className="w-6 h-6 bg-oralieves-primary rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
@@ -97,7 +161,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
           {/* Section 3: Core Values - Center Focus */}
           <section className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Core Values</h2>
+              <h2 className="text-3xl md:text-4xl text-gray-800 mb-4" style={{ fontWeight: '400' }}>Our Core Values</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 The principles that guide us in every partnership and decision
               </p>
@@ -111,7 +175,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Reliability</h3>
+                <h3 className="text-2xl text-gray-800 mb-4 text-center" style={{ fontWeight: '400' }}>Reliability</h3>
                 <p className="text-gray-700 leading-relaxed text-center">
                   Delivering consistent results you can trust
                 </p>
@@ -124,7 +188,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Sustainability</h3>
+                <h3 className="text-2xl text-gray-800 mb-4 text-center" style={{ fontWeight: '400' }}>Sustainability</h3>
                 <p className="text-gray-700 leading-relaxed text-center">
                   Building long-term partnerships with a focus on ethical growth
                 </p>
@@ -137,7 +201,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Transparency</h3>
+                <h3 className="text-2xl text-gray-800 mb-4 text-center" style={{ fontWeight: '400' }}>Transparency</h3>
                 <p className="text-gray-700 leading-relaxed text-center">
                   Open and honest business practices
                 </p>
@@ -148,7 +212,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
           {/* Section 4: Strategic Value */}
           <section className="mb-20">
             <div className="bg-gradient-to-r from-oralieves-primary to-oralieves-secondary rounded-3xl p-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Strategic Value</h2>
+              <h2 className="text-3xl md:text-4xl text-white mb-6" style={{ fontWeight: '400' }}>Our Strategic Value</h2>
               <div className="max-w-2xl mx-auto">
                 <p className="text-xl text-white/90 leading-relaxed">
                   Small but Focused – A streamlined approach that ensures efficiency, attention to detail, and personalized service
@@ -172,7 +236,40 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
         </div>
       </main>
 
-      <Footer />
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Social Media */}
+          <div className="flex flex-col items-center mb-8">
+            <h4 className="text-lg font-semibold mb-4">FIND US:</h4>
+            <div className="flex gap-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full transition-all duration-300 hover:scale-110"
+                  style={{ 
+                    backgroundColor: 'rgb(79 209 199)',
+                    color: 'white'
+                  }}
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Copyright and Address */}
+          <div className="text-center space-y-2 pt-8 border-t border-gray-700">
+            <p className="text-sm text-gray-400">
+              © {currentYear} Oralieves. All rights reserved. | Manufacturer of Personal Care Products
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

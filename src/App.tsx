@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Manufacturers from './pages/Manufacturers';
+import Clients from './pages/Clients';
 import LandingPage from './pages/LandingPage';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
     return <ContactUs setCurrentPage={setCurrentPage} />;
   } else if (currentPage === 'manufacturers') {
     return <Manufacturers setCurrentPage={setCurrentPage} />;
+  } else if (currentPage === 'clients') {
+    return <Clients setCurrentPage={setCurrentPage} />;
   } else {
     return <LandingPage setCurrentPage={setCurrentPage} />;
   }
