@@ -20,3 +20,58 @@
     @apply bg-white hover:bg-gray-50 text-oralieves-primary font-semibold py-2 px-6 rounded-lg border-2 border-oralieves-primary hover:shadow-lg transition-all duration-300 transform hover:scale-105;
   }
 }
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(79 209 199);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(59 189 179);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Custom focus styles */
+a:focus,
+button:focus {
+  outline: 2px solid rgb(79 209 199);
+  outline-offset: 2px;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, rgb(79 209 199) 0%, #005a9e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
