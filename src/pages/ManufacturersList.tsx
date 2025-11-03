@@ -63,7 +63,7 @@ const ManufacturersList: React.FC<ManufacturersListProps> = ({ setCurrentPage })
         <div className="max-w-5xl mx-auto">
           {/* Manufacturers Grid */}
           <div className="grid md:grid-cols-2 gap-6">
-            {manufacturers.map((manufacturer, index) => (
+            {manufacturers.map((manufacturer) => (
               <div 
                 key={manufacturer.id}
                 onClick={() => setCurrentPage('manufacturer-detail', manufacturer.id)}
