@@ -12,7 +12,7 @@ import {
 import Logo from '../images/Logo.png';
 
 interface LandingPageProps {
-  setCurrentPage: (page: string) => void;
+  setCurrentPage: (page: string, id?: string) => void;
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
@@ -43,7 +43,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
       title: "Manufacturers",
       description: "Partner with leading manufacturers to deliver high-quality oral healthcare products and innovative solutions to healthcare providers.",
       linkText: "Explore Partners",
-      page: "manufacturers"
+      page: "manufacturers-list"
     }
   ];
 
@@ -58,7 +58,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
   return (
       <div className="min-h-screen bg-white">
       {/* White Section with Logo */}
-      <div className="relative bg-white" style={{ height: '100px' }}>
+      <div className="relative bg-white h-16 md:h-20">
         {/* Logo Container - Positioned to overlap both sections */}
         <div 
           className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-1000 ${
@@ -66,9 +66,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
           }`} 
           style={{ top: '40px', zIndex: 10 }}
         >
-          <div className="bg-white rounded-lg shadow-xl p-6 border border-gray-100" style={{ width: '300px', height: '120px' }}>
-            <div className="flex flex-col items-center justify-center h-full">
-              <img src={Logo} alt="OraLabs Logo" style={{ maxHeight: '200px', width: 'auto' }} />
+          <div className="rounded-lg shadow-2xl border border-gray-100 relative overflow-hidden w-[180px] h-[65px] md:w-[239px] md:h-[84px]" style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200 opacity-50"></div>
+            <div className="relative bg-white p-4 md:p-6 flex flex-col items-center justify-center h-full">
+              <img src={Logo} alt="OraLabs Logo" className="max-h-[150px] md:max-h-[200px] w-auto" />
             </div>
           </div>
         </div>
@@ -76,19 +77,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
 
       {/* Blue Section with Services */}
       <div 
-        className="relative py-20 px-6"
+        className="relative py-12 md:py-20 px-4 md:px-6"
         style={{ 
           background: 'linear-gradient(135deg, rgb(79, 209, 199) 0%, rgb(15, 150, 150) 100%)',
-          minHeight: '600px'
+          minHeight: '400px'
         }}
       >
         <div className="max-w-7xl mx-auto">
           {/* Service Cards - Row Layout */}
-          <div className="grid md:grid-cols-3 gap-8 mt-8">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-8">
             {serviceCards.map((service, index) => (
               <div 
                 key={index}
-                className={`flex justify-center items-center transition-all duration-500 ${
+                className={`flex flex-col items-center transition-all duration-500 ${
                   isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
@@ -98,43 +99,35 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
                 {/* Circular Card Background - Clickable */}
                 <div 
                   onClick={() => setCurrentPage(service.page)}
-                  className="bg-white rounded-full shadow-lg hover:shadow-xl transform group hover:scale-105 transition-all duration-300 p-8 flex flex-col items-center justify-center text-center cursor-pointer"
-                  style={{ width: '400px', height: '400px', border: '3px solid rgb(15, 150, 150)' }}
+                  className="bg-white rounded-full shadow-lg hover:shadow-xl transform group hover:scale-105 transition-all duration-300 p-4 md:p-8 flex flex-col items-center justify-center text-center cursor-pointer w-[220px] h-[220px] md:w-[280px] md:h-[280px]"
+                  style={{ border: '3px solid rgb(15, 150, 150)' }}
                 >
                   {/* Icon Circle */}
                   <div 
-                    className="relative flex items-center justify-center rounded-full border-4 transition-all duration-500 ease-out group-hover:scale-110 mb-5"
-                    style={{ 
-                      width: '120px',
-                      height: '120px',
-                      backgroundColor: 'rgba(79, 209, 199, 0.1)',
-                      borderColor: 'rgb(15, 150, 150)',
-                      boxShadow: '0 0 20px rgba(79, 209, 199, 0.3)'
-                    }}
+                    className="flex items-center justify-center mb-3 md:mb-5 transition-all duration-500 ease-out group-hover:scale-110"
                   >
                     <div 
-                      className="flex items-center justify-center rounded-full"
+                      className="flex items-center justify-center rounded-full w-16 h-16 md:w-20 md:h-20"
                       style={{ 
-                        width: '85px',
-                        height: '85px',
                         backgroundColor: 'rgb(79, 209, 199)'
                       }}
                     >
                       <div className="text-white transform group-hover:scale-110 transition-transform duration-300">
-                        {React.cloneElement(service.icon, { className: 'w-10 h-10' })}
+                        {React.cloneElement(service.icon, { className: 'w-6 h-6 md:w-8 md:h-8' })}
                       </div>
                     </div>
                   </div>
                   
-                  {/* Content */}
-                  <h3 className="text-2xl mb-3" style={{ color: '#0f9696', fontWeight: '400' }}>
+                  {/* Title */}
+                  <h3 className="text-lg md:text-xl" style={{ color: '#0f9696', fontWeight: '400' }}>
                     {service.title}
                   </h3>
-                  
-                  <p className="text-gray-600 mb-5 text-base leading-relaxed px-6">
-                    {service.description}
-                  </p>
                 </div>
+                
+                {/* Description outside circle */}
+                <p className="text-white text-xs md:text-sm leading-relaxed px-4 md:px-6 mt-4 max-w-[250px] md:max-w-[300px] text-center">
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>
@@ -143,14 +136,23 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
 
       {/* White Section */}
       <div className="bg-white py-6">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-center gap-8">
-            <a href="#newsroom" className="text-lg font-semibold transition-colors duration-300 hover:text-oralieves-primary" style={{ color: '#0f9696' }}>
-              News Room
-            </a>
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex justify-center gap-6 md:gap-8">
+            <button 
+              onClick={() => {
+                setCurrentPage('about');
+                setTimeout(() => {
+                  document.getElementById('blogs')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
+              className="text-base md:text-lg font-semibold transition-colors duration-300 hover:text-oralieves-primary" 
+              style={{ color: '#0f9696' }}
+            >
+              Blogs
+            </button>
             <button 
               onClick={() => setCurrentPage('contact')}
-              className="text-lg font-semibold transition-colors duration-300 hover:text-oralieves-primary" 
+              className="text-base md:text-lg font-semibold transition-colors duration-300 hover:text-oralieves-primary" 
               style={{ color: '#0f9696' }}
             >
               Contact Us
@@ -160,8 +162,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <footer className="bg-gray-900 text-white py-8 md:py-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
           {/* Social Media */}
           <div className="flex flex-col items-center mb-8">
             <h4 className="text-lg font-semibold mb-4">FIND US:</h4>

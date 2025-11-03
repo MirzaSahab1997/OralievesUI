@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 interface ClientsProps {
-  setCurrentPage: (page: string) => void;
+  setCurrentPage: (page: string, id?: string) => void;
 }
 
 const Clients: React.FC<ClientsProps> = ({ setCurrentPage }) => {
@@ -24,19 +24,6 @@ const Clients: React.FC<ClientsProps> = ({ setCurrentPage }) => {
 
   return (
     <div className="relative min-h-screen bg-white">
-      {/* Back Button */}
-      <div className="absolute top-4 left-4 z-50">
-        <button
-          onClick={() => setCurrentPage('home')}
-          className="flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to Home
-        </button>
-      </div>
-
       {/* Banner Section */}
       <section 
         className="py-16 px-4 sm:px-6 lg:px-8"
