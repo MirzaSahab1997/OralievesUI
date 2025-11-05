@@ -19,8 +19,8 @@ const Navbar: React.FC<NavbarProps> = ({ setCurrentPage, currentPage = 'home' })
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button onClick={() => setCurrentPage('about')} className={currentPage === 'about' ? "text-oralieves-primary font-semibold" : "text-gray-700 hover:text-oralieves-primary transition-colors"}>About Us</button>
-            <button onClick={() => setCurrentPage('manufacturers')} className={currentPage === 'manufacturers' ? "text-oralieves-primary font-semibold" : "text-gray-700 hover:text-oralieves-primary transition-colors"}>Manufacturers</button>
-            <button onClick={() => setCurrentPage('home')} className="text-gray-700 hover:text-oralieves-primary transition-colors">Clients</button>
+            <button onClick={() => setCurrentPage('manufacturers')} className={currentPage === 'manufacturers' || currentPage === 'manufacturers-list' ? "text-oralieves-primary font-semibold" : "text-gray-700 hover:text-oralieves-primary transition-colors"}>Manufacturers</button>
+            <button onClick={() => setCurrentPage('clients-list')} className={currentPage === 'clients' || currentPage === 'clients-list' || currentPage === 'client-detail' ? "text-oralieves-primary font-semibold" : "text-gray-700 hover:text-oralieves-primary transition-colors"}>Clients</button>
             <button onClick={() => setCurrentPage('contact')} className="btn-primary">Contact</button>
           </nav>
 

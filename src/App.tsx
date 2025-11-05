@@ -5,6 +5,7 @@ import ContactUs from './pages/ContactUs';
 import Manufacturers from './pages/Manufacturers';
 import ManufacturersList from './pages/ManufacturersList';
 import Clients from './pages/Clients';
+import ClientsList from './pages/ClientsList';
 import LandingPage from './pages/LandingPage';
 import BlogDetail from './pages/BlogDetail';
 
@@ -12,6 +13,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [blogId, setBlogId] = useState<string>('');
   const [manufacturerId, setManufacturerId] = useState<string>('');
+  const [clientId, setClientId] = useState<string>('');
 
   // Handle browser back/forward navigation
   useEffect(() => {
@@ -45,11 +47,18 @@ function App() {
     updatePage(page);
   };
 
+  const updatePageWithClientId = (page: string, id: string = '') => {
+    setClientId(id);
+    updatePage(page);
+  };
+
   const handlePageNavigation = (page: string, id: string = '') => {
     if (page === 'blog') {
       updatePageWithBlogId(page, id);
     } else if (page === 'manufacturer-detail') {
       updatePageWithManufacturerId(page, id);
+    } else if (page === 'client-detail') {
+      updatePageWithClientId(page, id);
     } else {
       updatePage(page);
     }
@@ -63,8 +72,10 @@ function App() {
     return <ManufacturersList setCurrentPage={handlePageNavigation} />;
   } else if (currentPage === 'manufacturer-detail') {
     return <Manufacturers setCurrentPage={handlePageNavigation} manufacturerId={manufacturerId} />;
-  } else if (currentPage === 'clients') {
-    return <Clients setCurrentPage={handlePageNavigation} />;
+  } else if (currentPage === 'clients' || currentPage === 'clients-list') {
+    return <ClientsList setCurrentPage={handlePageNavigation} />;
+  } else if (currentPage === 'client-detail') {
+    return <Clients setCurrentPage={handlePageNavigation} clientId={clientId} />;
   } else if (currentPage === 'blog') {
     return <BlogDetail setCurrentPage={handlePageNavigation} blogId={blogId} />;
   } else {
