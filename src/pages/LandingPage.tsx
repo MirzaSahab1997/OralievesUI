@@ -29,7 +29,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
       title: "Clients",
       description: "Serving clinics, distributors, and retail chains with comprehensive oral healthcare solutions tailored to their specific needs.",
       linkText: "Learn More",
-      page: "clients"
+      page: "clients-list"
     },
     {
       icon: <Building2 className="w-8 h-8" />,
