@@ -36,8 +36,8 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
       >
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4) 0, rgba(255,255,255,0) 45%)' }} />
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md rounded-full px-4 py-2 mb-6 border border-white/30">
+          <div className="text-center lg:text-left lg:pr-8">
+            <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md rounded-full px-4 py-2 mb-6 border border-white/30 justify-center">
               <div className="flex items-center justify-center bg-white rounded-full w-12 h-12 shadow-lg">
                 <img src={Logo} alt="Oralieves Logo" className="h-8 w-auto" />
               </div>
@@ -49,7 +49,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
             <p className="text-white/90 text-lg sm:text-xl leading-relaxed mb-10">
               Building trusted global partnerships for a healthier and more connected world.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <button
                 onClick={() => setCurrentPage('clients')}
                 className="btn-primary px-6 py-2.5 text-base font-semibold bg-white text-oralieves-primary hover:bg-oralieves-light hover:text-oralieves-primary"
@@ -64,7 +64,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
               </button>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative max-w-md mx-auto lg:max-w-none">
             <div className="absolute -top-8 -right-6 w-40 h-40 bg-white/20 rounded-full blur-3xl" />
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20">
               <img
@@ -73,7 +73,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white/80 rounded-2xl shadow-lg px-6 py-4 border border-oralieves-primary/20">
+            <div className="hidden sm:block absolute -bottom-6 -left-6 bg-white/80 rounded-2xl shadow-lg px-6 py-4 border border-oralieves-primary/20">
               <p className="text-sm font-medium text-oralieves-primary uppercase tracking-wide">Trusted Global Partnerships</p>
               <p className="text-xs text-gray-600 mt-1">Connecting manufacturers and distributors worldwide</p>
               </div>
@@ -96,7 +96,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
             >
               SERVICES
             </button>
-            <button 
+          <button
               onClick={() => {
               document.getElementById('why-choose')?.scrollIntoView({ behavior: 'smooth' });
               }}
@@ -104,6 +104,14 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
             >
             WHY ORALIEVES
             </button>
+          <button
+            onClick={() => {
+              document.getElementById('blogs')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="text-white hover:text-oralieves-primary transition-colors font-medium text-xs md:text-base whitespace-nowrap"
+          >
+            BLOGS
+          </button>
             <button 
               onClick={() => {
               document.getElementById('join-network')?.scrollIntoView({ behavior: 'smooth' });
@@ -126,9 +134,9 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
         <div className="max-w-7xl mx-auto space-y-20">
           {/* Company Background */}
           <section id="company-background" className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
-              <div>
+            <div className="text-center lg:text-left">
               <h2 className="text-3xl md:text-4xl text-gray-800 mb-6 font-light">ORALIEVES Pakistan</h2>
-                <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              <p className="text-gray-700 text-lg leading-relaxed mb-4">
                 Based in Karachi, Pakistan, ORALIEVES is a partnership-based international service company connecting manufacturers with distributors—our valued clients—for the marketing of their products.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed mb-4">
@@ -149,7 +157,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
               </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative max-w-md mx-auto lg:max-w-none">
               <div className="absolute inset-0 bg-gradient-to-br from-oralieves-primary/10 to-oralieves-secondary/5 rounded-3xl blur-2xl" />
               <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
                 <img
@@ -215,6 +223,111 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
                   <p>• Responsive guidance from a dedicated oral health care team</p>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* Blogs */}
+          <section id="blogs" className="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-gray-100">
+            <div className="text-center mb-12 max-w-3xl mx-auto">
+              <span className="text-sm font-semibold uppercase tracking-widest text-oralieves-primary">Latest Blogs & Insights</span>
+              <h2 className="text-3xl md:text-4xl text-gray-800 mt-4 font-light">Stay Informed with Oral Health Trends</h2>
+              <p className="text-lg text-gray-600 leading-relaxed mt-4">
+                Explore our insights on innovation, distribution, and preventive care across the oral health ecosystem.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-gray-100">
+                <div className="overflow-hidden h-48">
+                  <img
+                    src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&h=400&fit=crop"
+                    alt="Oral Health Innovation"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-xs font-semibold text-oralieves-primary uppercase tracking-wide">Innovation</span>
+                  <h3 className="text-xl text-gray-800 mt-3 mb-2 group-hover:text-oralieves-primary transition-colors font-semibold">
+                    The Future of Nano-Enhanced Oral Care
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    Explore how nanotechnology is revolutionizing oral healthcare, delivering faster healing and improved patient outcomes through advanced product formulations.
+                  </p>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage('blog', '1');
+                    }}
+                    className="text-oralieves-primary font-semibold text-sm hover:underline inline-flex items-center"
+                  >
+                    Read More
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </div>
+              </article>
+
+              <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-gray-100">
+                <div className="overflow-hidden h-48">
+                  <img
+                    src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=400&fit=crop"
+                    alt="Healthcare Distribution"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-xs font-semibold text-oralieves-secondary uppercase tracking-wide">Industry</span>
+                  <h3 className="text-xl text-gray-800 mt-3 mb-2 group-hover:text-oralieves-primary transition-colors font-semibold">
+                    Building Successful Distribution Networks
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    Learn about the key strategies for establishing effective distribution channels in the oral healthcare market and ensuring product accessibility.
+                  </p>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage('blog', '2');
+                    }}
+                    className="text-oralieves-primary font-semibold text-sm hover:underline inline-flex items-center"
+                  >
+                    Read More
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </div>
+              </article>
+
+              <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-gray-100">
+                <div className="overflow-hidden h-48">
+                  <img
+                    src="https://images.unsplash.com/photo-1628202926206-c63a34b1618f?w=600&h=400&fit=crop"
+                    alt="Patient Care"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-xs font-semibold text-oralieves-accent uppercase tracking-wide">Wellness</span>
+                  <h3 className="text-xl text-gray-800 mt-3 mb-2 group-hover:text-oralieves-primary transition-colors font-semibold">
+                    Preventive Oral Care Best Practices
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    Discover evidence-based approaches to preventive oral healthcare and how modern products are supporting better patient outcomes.
+                  </p>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage('blog', '3');
+                    }}
+                    className="text-oralieves-primary font-semibold text-sm hover:underline inline-flex items-center"
+                  >
+                    Read More
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </div>
+              </article>
             </div>
           </section>
 

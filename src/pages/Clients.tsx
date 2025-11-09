@@ -145,7 +145,7 @@ const Clients: React.FC<ClientsProps> = ({ setCurrentPage, clientId }) => {
 
       {/* Main Content */}
       <main className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Sub Menu */}
           <div className="mb-12" id="company-background">
             <h2 className="text-3xl text-gray-800 mb-8 text-center" style={{ fontWeight: '400' }}>
