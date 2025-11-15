@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../images/Logo.png';
+import aboutImage from '../images/Image.jfif';
 import { 
   Facebook, 
   Twitter, 
@@ -159,9 +160,9 @@ const AboutUs: React.FC<AboutUsProps> = ({ setCurrentPage }) => {
             </div>
             <div className="relative max-w-md mx-auto lg:max-w-none">
               <div className="absolute inset-0 bg-gradient-to-br from-oralieves-primary/10 to-oralieves-secondary/5 rounded-3xl blur-2xl" />
-              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 aspect-[3/2]">
                 <img
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&h=650&fit=crop"
+                  src={aboutImage}
                   alt="Professional collaboration"
                   className="w-full h-full object-cover"
                 />

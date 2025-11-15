@@ -10,6 +10,9 @@ import {
   Linkedin
 } from 'lucide-react';
 import Logo from '../images/Logo.png';
+import clientImage from '../images/client.jpg';
+import centerImage from '../images/Image.jfif';
+import manufactureImage from '../images/manufacture.jpeg';
 
 interface LandingPageProps {
   setCurrentPage: (page: string, id?: string) => void;
@@ -33,7 +36,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
         "We offer high-quality, compliant, and sustainable Health Care Products for long-term cooperation."
       ],
       linkText: "Learn More",
-      page: "clients-list"
+      page: "clients-list",
+      image: clientImage
     },
     {
       icon: <Building2 className="w-8 h-8" />,
@@ -45,7 +49,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
         "We act as a trusted service company based in Pakistan, bridging opportunities between manufacturers and distributors in the global health care sector."
       ],
       linkText: "Learn More",
-      page: "about"
+      page: "about",
+      image: centerImage
     },
     {
       icon: <Package className="w-8 h-8" />,
@@ -56,7 +61,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
         "Work with teams that have strong local networks, regulatory awareness, and market experience."
       ],
       linkText: "Explore Partners",
-      page: "manufacturers-list"
+      page: "manufacturers-list",
+      image: manufactureImage
     }
   ];
 
@@ -115,22 +121,31 @@ const LandingPage: React.FC<LandingPageProps> = ({ setCurrentPage }) => {
                   {/* Circular Card Background - Clickable */}
                   <div 
                     onClick={() => setCurrentPage(service.page)}
-                    className="bg-white rounded-full shadow-lg hover:shadow-xl transform group hover:scale-105 transition-all duration-300 p-4 md:p-8 flex flex-col items-center justify-center text-center cursor-pointer w-[220px] h-[220px] md:w-[280px] md:h-[280px]"
+                    className="bg-white rounded-full shadow-lg hover:shadow-xl transform group hover:scale-105 transition-all duration-300 p-1 md:p-2 flex flex-col items-center justify-center text-center cursor-pointer w-[220px] h-[220px] md:w-[280px] md:h-[280px]"
                     style={{ border: '3px solid rgb(15, 150, 150)' }}
                   >
                     {/* Icon Circle */}
                     <div 
-                      className="flex items-center justify-center mb-3 md:mb-5 transition-all duration-500 ease-out group-hover:scale-110"
+                      className="flex items-center justify-center mb-0 w-full h-full transition-all duration-500 ease-out group-hover:scale-110"
                     >
                       <div 
-                        className="flex items-center justify-center rounded-full w-16 h-16 md:w-20 md:h-20"
+                        className="flex items-center justify-center rounded-full w-full h-full overflow-hidden"
                         style={{ 
                           backgroundColor: 'rgb(79, 209, 199)'
                         }}
                       >
-                        <div className="text-white transform group-hover:scale-110 transition-transform duration-300">
-                          {React.cloneElement(service.icon, { className: 'w-6 h-6 md:w-8 md:h-8' })}
-                        </div>
+                        {service.image ? (
+                          <img 
+                            src={service.image} 
+                            alt={service.title} 
+                            className="w-full h-full object-cover rounded-full"
+                            style={service.title === "ORALIEVES UPRIGHT PEOPLE" ? { objectPosition: 'center 10%' } : undefined}
+                          />
+                        ) : (
+                          <div className="text-white transform group-hover:scale-110 transition-transform duration-300">
+                            {React.cloneElement(service.icon, { className: 'w-6 h-6 md:w-8 md:h-8' })}
+                          </div>
+                        )}
                       </div>
                     </div>
                     
